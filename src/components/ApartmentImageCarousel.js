@@ -14,9 +14,9 @@ const ApartmentImageCarousel = ({ images }) => {
       loop={true}
       autoplay={{ delay: 4000, disableOnInteraction: false }}
     >
-      {images.map((image) => {
+      {images.map((image, i) => {
         return (
-          <SwiperSlide>
+          <SwiperSlide key={i}>
             <img src={image} alt="" className="w-full" />
             <button className="absolute top-3 right-3 bg-black opacity-40 hover:opacity-50 rounded-lg text-white p-2">
               <BsHeart />

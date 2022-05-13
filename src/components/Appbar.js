@@ -10,6 +10,10 @@ const navigation = [
 ];
 
 const Appbar = () => {
+  const LoginButton = () => (
+    <button className="rounded-full bg-cyan-700 text-white px-8">Login</button>
+  );
+
   return (
     <Disclosure as="nav">
       {({ open }) => (
@@ -46,9 +50,7 @@ const Appbar = () => {
                         {item.name}
                       </a>
                     ))}
-                    <button class="rounded-full bg-cyan-700 text-white px-8">
-                      Login
-                    </button>
+                    <LoginButton />
                   </div>
                 </div>
               </div>
@@ -67,9 +69,7 @@ const Appbar = () => {
                   {item.name}
                 </Disclosure.Button>
               ))}
-              <button class="rounded-full bg-cyan-700 text-white px-8">
-                Login
-              </button>
+              <LoginButton />
             </div>
           </Disclosure.Panel>
         </>

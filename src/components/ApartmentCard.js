@@ -1,10 +1,27 @@
 import { BiArea, BiBath } from "react-icons/bi";
 import { RiHotelBedLine } from "react-icons/ri";
+
 import ApartmentImageCarousel from "./ApartmentImageCarousel";
 
 const ApartmentCard = ({ data }) => {
   const { name, images, type, price, discountedPrice, rooms, bathrooms, size } =
     data;
+
+  const ApartmentInfo = ({ data }) => {
+    return (
+      <div className="flex items-center">
+        {(data === size && <BiArea />) ||
+          (data === rooms && <RiHotelBedLine />) ||
+          (data === bathrooms && <BiBath />)}
+        <p className="ml-1">
+          {data}&nbsp;
+          {(data === size && "Sqft") ||
+            (data === rooms && "Rooms") ||
+            (data === bathrooms && "Bath")}
+        </p>
+      </div>
+    );
+  };
 
   return (
     <div className="shadow-sm border-x border-b bg-white rounded-xl">
@@ -25,18 +42,9 @@ const ApartmentCard = ({ data }) => {
           </p>
         </div>
         <div className="flex justify-between text-gray-600">
-          <div className="flex items-center">
-            <BiArea />
-            <p className="ml-1">{size} Sqft</p>
-          </div>
-          <div className="flex items-center">
-            <RiHotelBedLine />
-            <p className="ml-1">{rooms} Rooms</p>
-          </div>
-          <div className="flex items-center">
-            <BiBath />
-            <p className="ml-1">{bathrooms} Bath</p>
-          </div>
+          {[size, rooms, bathrooms].map((item, i) => (
+            <ApartmentInfo key={i} data={item} />
+          ))}
         </div>
       </div>
     </div>
